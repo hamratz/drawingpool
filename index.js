@@ -1,4 +1,5 @@
 const url = 'http://localhost:3000/drawings'
+const collection = document.querySelector('div#drawing-collection')
 
 function renderAllDrawings() {
     fetch(url)
@@ -11,8 +12,18 @@ function renderAllDrawings() {
       })
   }
 
-function renderOneDrawing() {
-
+function renderOneDrawing(drawing) {
+    const drawDiv = document.createElement('div')
+    drawDiv.dataset.id = drawing.id
     
+    drawDiv.classList.add('draw')
+
+    drawDiv.innerHTML = 
+    `<img src=${drawing.image} class="all-drawings" />`
+
+   collection.append(drawDiv)
+
+
+
 }
   renderAllDrawings()
