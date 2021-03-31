@@ -22,8 +22,11 @@ function renderOneDrawing(drawing) {
     `<img src=${drawing.image} class="all-drawings" />`
 
    collection.append(drawDiv)
+}
 
-
-
+function getOneDrawing(id) {
+  fetch(`${url}/${id}`)
+    .then(res => res.json())
+    .then
 }
   renderAllDrawings()
