@@ -1,24 +1,44 @@
-// let welcomeBtn = false
 
-const url = 'http://localhost:3000/drawings'
+document.addEventListener("DOMContentLoaded", () => {
+
+const drawingsUrl = 'http://localhost:3000/drawings'
+const usersUrl = 'http://localhost:3000/users'
 const collection = document.querySelector('div#drawing-collection')
 const usernameForm = document.querySelector('form#username-form')
-const drawDiv = document.querySelector('div#all-drawings')
+const newDrawingForm = document.querySelector('form#new-drawing-form')
+let drawDiv = document.querySelector('div#all-drawings')
 const welcomeDiv = document.querySelector('div#welcome')
 
 
 
 
-usernameForm.addEventListener("submit", (event) => {
+
+
+
+usernameForm.addEventListener("submit", function(event){
   event.preventDefault()
-welcomeDiv.textContent = ""
+const usernameInput = event.target[0].value
+
+fetch(usersUrl, {
+  method: 'POST', 
+  headers: {
+    'Content-Type': 'application/json'
+  },
+
+  body: JSON.stringify({
+    username: usernameInput
+  })
+
+})
+  welcomeDiv.textContent = ""
 renderAllDrawings()
 })
 
 
 
+
 function renderAllDrawings() {
-    fetch(url)
+    fetch(drawingsUrl)
       .then(res => res.json())
       .then(drawings => {
         // console.log(drawings)
@@ -42,3 +62,12 @@ function renderOneDrawing(drawing) {
 
 
 }
+
+let oneDrawingDiv = document.querySelector('div.draw')
+   oneDrawingDiv.addEventListener('click', function(){
+    console.log("im clicked ")
+  })
+
+})
+
+
