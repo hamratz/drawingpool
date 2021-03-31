@@ -8,6 +8,7 @@ const usernameForm = document.querySelector('form#username-form')
 const newDrawingForm = document.querySelector('form#new-drawing-form')
 let drawDiv = document.querySelector('div#all-drawings')
 const welcomeDiv = document.querySelector('div#welcome')
+const mainImgDiv = document.querySelector('div#main-drawing')
 
 
 
@@ -55,7 +56,7 @@ function renderOneDrawing(drawing) {
     drawDiv.classList.add('draw')
 
     drawDiv.innerHTML = 
-    `<img src=${drawing.image} class="all-drawings" />`
+    `<img src=${drawing.image} id=${drawing.id} class="all-drawings" />`
 
    collection.append(drawDiv)
 
@@ -63,10 +64,30 @@ function renderOneDrawing(drawing) {
 
 }
 
-let oneDrawingDiv = document.querySelector('div.draw')
-   oneDrawingDiv.addEventListener('click', function(){
-    console.log("im clicked ")
+
+
+   collection.addEventListener('click', event => {
+    if (event.target.matches('img.all-drawings')) {
+
+      const id = event.target.id
+  
+    fetch(`${drawingsUrl}/${id}`)
+    .then(response => response.json())
+    .then(img => {
+      drawDiv.textContent = ""
+      mainImg(img)
+    })
+    }
   })
+
+  function mainImg(img){
+    const imgDiv = document.createElement('div')
+
+    imgDiv.innerHTML = 
+     `<img src=${img.image} id=${img.id} class="all-drawings" />`
+
+     mainImgDiv.append(imgDiv)
+  }
 
 })
 
