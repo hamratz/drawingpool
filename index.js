@@ -12,10 +12,6 @@ const mainImgDiv = document.querySelector('div#main-drawing')
 
 
 
-
-
-
-
 usernameForm.addEventListener("submit", function(event){
   event.preventDefault()
 const usernameInput = event.target[0].value
@@ -91,4 +87,47 @@ function renderOneDrawing(drawing) {
 
 })
 
+// function handleSubmitForm(event) {
+//   event.preventDefault()
+//   const comment = event.target[0].value
+//   event.target.reset()
 
+//   fetch(url, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Accept': 'application/json'
+//     },
+
+//     body: JSON.stringify({ 
+//       comment: comment
+//        })
+//   })
+//     .then(res => res.json())
+//     .then(newComment => {
+//       renderOneComment(newComment) 
+//     })
+// }
+
+function handleSubmitForm(event) {
+  event.preventDefault()
+  const image = event.target[1].value
+  event.target.reset()
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+
+    body: JSON.stringify({ 
+      image: image
+       })
+  })
+    .then(res => res.json())
+    .then(newImage => {
+      renderOneImage(newImage) 
+    })
+    renderAllDrawings()
+}

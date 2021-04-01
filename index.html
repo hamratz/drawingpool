@@ -18,44 +18,44 @@
 <br>
 <br>
 <br>
+
 <div style="text-align:center" id="welcome">
-    
     <h2 style="text-align:center">welcome</h2>
-    
-    <form id="username-form" data-id="">
+    <!-- --user login form- -->
+   <form id="username-form" data-id="">
         <input type="text" username="username" value="" class="input-text"/>
         <input type="submit" name="submit" value="enter" class="submit"/>
-    </form>
+    </form> 
 
 </div>
 
 <div id="all-drawings">
-    
     <div id="drawing-collection"></div>
-
-    <!-- <form id="new-drawing-form" data-id="">
-        <input type="text" image="url" value="" class="input-text"/>
-        <input type="text" comment="comment" value="" class="input-text"/>
-        <input type="submit" name="submit" value="submit" class="submit"/>
-    </form> -->
-
 </div>
 
-<div id="main-drawing"></div>
+<!----render one drawing when clicked--->
+<div id="main-drawing">
+<!----comment form --->
+    <div id="comment-form">
+        <!-- <form id="new-comment-form">
+            <input type="text" comment="comment" value="" class="input-text"/>
+            <input type="submit" name="submit" value="submit" class="submit"/>
+        </form> -->
+    </div>
+</div>
 
 
         
 
 
 <!----image form --->
-<form id="image-form">
+<div id="draw-form">
+    <form id="new-drawing-form" data-id="">
+        <input type="jpg" image="url" value="" class="input-text"/>
+        <input type="submit" name="submit" value="submit" class="submit"/>
+    </form>
+</div>
 
-</form>
-
-<!----comment form --->
-<form id="comment-form">
-
-</form>
 
 
 
